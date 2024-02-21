@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>{{ $title ?? 'Training Dashboard' }}</title>
+    <title>
+        @if (isset($title) && $title !== '')
+            {{ $title . ' | Training Dashboard' }}
+        @else
+            {{ 'Training Dashboard' }}
+        @endif
+    </title>
 </head>
 <body>
+    <x-widgets.navbar />
     <div>{{ $slot }}</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
